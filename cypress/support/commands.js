@@ -27,3 +27,18 @@ Cypress.Commands.add(
     });
   }
 );
+
+Cypress.Commands.add(
+  "supplier_successful_signup",
+  (email, company_name, location, password, password_confirmation) => {
+    cy.visit("http://localhost:3001");
+    cy.get("#sign-up-supplier").click();
+    cy.get("#signup-form").within(() => {
+      cy.get('input[id="email"]').type(email);
+      cy.get('input[id="company-name"]').type(company_name);
+      cy.get('input[id="location"]').type(location);
+      cy.get('input[id="password"]').type(password);
+      cy.get('input[id="password-confirmation"]').type(password_confirmation);
+    });
+  }
+);

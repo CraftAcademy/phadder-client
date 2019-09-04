@@ -1,0 +1,8 @@
+{
+  "status": "success",
+  "data": {
+    "email": "plumber@plumber.com",
+    "company_name": "Plumbing and fix AB",
+    "location": "stockholm"
+  }
+}

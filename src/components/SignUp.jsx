@@ -21,10 +21,10 @@ const SignUp = props => {
   return (
     <div>
       <Modal
-        trigger={<Button id="sign-up-button">REGISTER AS A CLIENT</Button>}
-        centered={false}
-      >
-        <Modal.Header>Join us!</Modal.Header>
+        trigger={<Button id="sign-up-button">REGISTER AS A CLIENT
+        </Button>}
+        centered={false}>
+       <Modal.Header>Join us!</Modal.Header>
         <Modal.Content>
           {error}
           <Form id="signup-form" onSubmit={handleSubmit(saveNewUserHandler)}>
