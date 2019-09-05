@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Container, Button } from "semantic-ui-react";
 import BuyersExplain from "./BuyersExplain";
 import SuppliersExplain from "./SuppliersExplain";
-import SignUp from "./SignUp";
+import SignUpClient from "./SignUpClient";
+import SignUpSupplier from "./SignUpSupplier";
 import { connect } from "react-redux";
 
 const Home = props => {
@@ -11,7 +12,7 @@ const Home = props => {
   let signUp;
   let welcomeMessage; // to be removed when we install flash messages
   if (props.currentUser.isSignedIn === false) {
-    signUp = <SignUp />;
+    signUp = <SignUpClient />;
   } else {
     signUp = "";
     welcomeMessage = `Welcome ${props.currentUser.attributes.firstName}!`; // to be removed when we install flash messages
@@ -22,6 +23,7 @@ const Home = props => {
       <div>
         {welcomeMessage}
         {signUp}
+        {<SignUpSupplier />}
       </div>
       <div>
         <Button

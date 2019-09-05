@@ -4,7 +4,7 @@ import useForm from "react-hook-form";
 import { connect } from "react-redux";
 import { registerUser } from "../state/actions/reduxTokenAuthConfig";
 
-const SignUp = props => {
+const SignUpClient = props => {
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState();
 
@@ -94,4 +94,4 @@ const SignUp = props => {
 export default connect(
   null,
   { registerUser }
-)(SignUp);
+)(SignUpClient);
