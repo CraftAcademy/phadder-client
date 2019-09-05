@@ -21,10 +21,21 @@ const SignUp = props => {
   return (
     <div>
       <Modal
-        trigger={<Button id="sign-up-button">REGISTER AS A CLIENT
-        </Button>}
-        centered={false}>
-       <Modal.Header>Join us!</Modal.Header>
+        trigger={
+          <Button
+            id="sign-up-button"
+            onClick={() => { 
+              props.dispatch({
+              type: "CHANGE_ROLE",
+              payload: "client"
+            })}}
+          >
+            REGISTER AS A CLIENT
+          </Button>
+        }
+        centered={false}
+      >
+        <Modal.Header>Join us!</Modal.Header>
         <Modal.Content>
           {error}
           <Form id="signup-form" onSubmit={handleSubmit(saveNewUserHandler)}>
@@ -85,7 +96,13 @@ const SignUp = props => {
   );
 };
 
+const mapStateToProps = state => {
+  return {
+    role: state.role
+  };
+};
+
 export default connect(
-  null,
+  mapStateToProps,
   { registerUser }
 )(SignUp);
