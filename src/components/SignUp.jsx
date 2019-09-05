@@ -24,11 +24,6 @@ const SignUp = props => {
         trigger={
           <Button
             id="sign-up-button"
-            onClick={() => { 
-              props.dispatch({
-              type: "CHANGE_ROLE",
-              payload: "client"
-            })}}
           >
             REGISTER AS A CLIENT
           </Button>
@@ -96,13 +91,7 @@ const SignUp = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    role: state.role
-  };
-};
-
 export default connect(
-  mapStateToProps,
+  null,
   { registerUser }
 )(SignUp);

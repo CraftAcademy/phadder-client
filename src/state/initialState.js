@@ -1,5 +1,4 @@
 const initialState = {
-  role: "",
   reduxTokenAuth: {
     currentUser: {
       isLoading: false,
