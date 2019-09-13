@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { connect } from "react-redux";
 import * as modalActions from "../state/actions/modalActions";
 import * as flashActions from "../state/actions/flashActions";
@@ -6,14 +6,17 @@ import { bindActionCreators } from "redux";
 import { Button, Form, Modal, Checkbox } from "semantic-ui-react";
 import useForm from "react-hook-form";
 import { saveRequest } from "../modules/saveRequest";
-import axios from 'axios';
+import axios from "axios";
 import { I18nContext } from "../i18n/index";
+import MockAdapter from "axios-mock-adapter";
+import categoriesApi from "../i18n/api_categories.js";
 
 const CreateRequest = props => {
   const { translate } = useContext(I18nContext);
   props.showCreateServiceRequestModal();
   const { register, handleSubmit } = useForm();
-  const [ liveLanguage, setLiveLanguage ] = useState();
+  const [liveLanguage, setLiveLanguage] = useState();
+  const [categories, setCategories] = useState();
 
   const saveServiceRequestHandler = async data => {
     const { title, category, details, budget, timeframe } = data;
@@ -42,7 +45,7 @@ const CreateRequest = props => {
         setLiveLanguage(response.data.message);
         document.getElementById(`${response.data.lang_code}`).checked = true;
       }
-    } catch (error) {};
+    } catch (error) {}
   };
 
   const onChangeHandler = e => {
@@ -51,6 +54,38 @@ const CreateRequest = props => {
       getLanguage(val);
     }
   };
+
+  let mockResponse = new MockAdapter(axios);
+
+  mockResponse
+    .onGet("http://localhost:3000/api/categories")
+    .reply(200, categoriesApi);
+
+  useEffect(
+    axios
+      .get("http://localhost:3000/api/categories")
+      .then(response => {
+        console.log(response.data);
+        debugger;
+        setCategories(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+        debugger;
+      })
+  );
+
+  let categoriesList;
+
+  if (categories.length > 0) {
+    categoriesList = categories.map(category => {
+      return (
+        <option key={category.id} className="options" name={category.name}>
+          {category.name}
+        </option>
+      );
+    });
+  }
 
   return (
     <>
@@ -91,39 +126,7 @@ const CreateRequest = props => {
                   <option className="options">
                     {translate("please_choose")}
                   </option>
-                  <option className="options" name="accounting">
-                    {translate("accounting")}
-                  </option>
-                  <option className="options" name="cleaning_service">
-                  {translate("cleaning-service")}
-                  </option>
-                  <option
-                    className="options"
-                    name="construction_and_maintenance"
-                  >
-                    {translate("construction_and_maintenance")}
-                  </option>
-                  <option className="options" name="education">
-                  {translate("education")}
-                  </option>
-                  <option className="options" name="financial_service">
-                  {translate("financial_services")}
-                  </option>
-                  <option className="options" name="health_care">
-                  {translate("health_care")}
-                  </option>
-                  <option className="options" name="insurance">
-                  {translate("insurance")}
-                  </option>
-                  <option className="options" name="it_service">
-                  {translate("it_services")}
-                  </option>
-                  <option className="options" name="legal_services">
-                  {translate("legal_services")}
-                  </option>
-                  <option className="options" name="software_development">
-                  {translate("software_development")}
-                  </option>
+                  {categoriesList}
                 </select>
               </Form.Field>
               <Form.Field>
@@ -178,13 +181,13 @@ const CreateRequest = props => {
                     {translate("choose-timeframe")}
                   </option>
                   <option className="options" name="urgent">
-                   {translate("urgent")}
+                    {translate("urgent")}
                   </option>
                   <option className="options" name="moderate">
-                  {translate("moderate")}
+                    {translate("moderate")}
                   </option>
                   <option className="options" name="long_term">
-                  {translate("long-term")}
+                    {translate("long-term")}
                   </option>
                 </select>
               </Form.Field>
