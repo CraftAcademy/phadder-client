@@ -1,4 +1,4 @@
-const categoriesApi = [
+[
   {
     "id": 128,
     "name": "Consulting",
@@ -154,5 +154,3 @@ const categoriesApi = [
     ]
   }
 ]
-
-export default categoriesApi;

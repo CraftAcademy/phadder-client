@@ -6,7 +6,7 @@ import { bindActionCreators } from "redux";
 import { Button, Form, Modal, Checkbox } from "semantic-ui-react";
 import useForm from "react-hook-form";
 import { saveRequest } from "../modules/saveRequest";
-import axios from 'axios';
+import axios from "axios";
 import { I18nContext } from "../i18n/index";
 
 const CreateRequest = props => {
@@ -15,7 +15,6 @@ const CreateRequest = props => {
   const { register, handleSubmit } = useForm();
   const [liveLanguage, setLiveLanguage] = useState();
   const [categories, setCategories] = useState();
-
 
   const saveServiceRequestHandler = async data => {
     const { title, category, details, budget, timeframe } = data;
@@ -34,31 +33,17 @@ const CreateRequest = props => {
     }
   };
 
-
-  useEffect(() => {
-    async function fetchCategories() {
-      // You can await here
-      const response = await axios.get("http://localhost:3000/api/categories")
-      setCategories(response.data)
-      console.log('categories: ' + JSON.stringify(categories))
-
-    }
-    fetchCategories();
-
-  }, [categories]);
-
-
   const getLanguage = async val => {
     try {
       let response = await axios.post(
         "http://localhost:3000/api/language_queries",
-        { content: val }
+        { val }
       );
       if (response.status === 200) {
         setLiveLanguage(response.data.message);
         document.getElementById(`${response.data.lang_code}`).checked = true;
       }
-    } catch (error) { };
+    } catch (error) {}
   };
 
   const onChangeHandler = e => {
@@ -68,18 +53,30 @@ const CreateRequest = props => {
     }
   };
 
-  let optionsList = async () => {
-    debugger
-    return (
-      <>
-        <option className="options">
-          {translate("please_choose")}
+  useEffect(
+    axios
+      .get("http://localhost:3000/api/categories")
+      .then(response => {
+        console.log(response.data);
+        debugger;
+        setCategories(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+        debugger;
+      })
+  );
+
+  let categoriesList;
+debugger
+  if (categories) {
+    categoriesList = categories.map(category => {
+      return (
+        <option key={category.id} className="options" name={category.name}>
+          {category.name}
         </option>
-        <option className="options" name="accounting">
-          {translate("accounting")}
-        </option>
-      </>
-    )
+      );
+    });
   }
 
   return (
@@ -118,12 +115,15 @@ const CreateRequest = props => {
                   name="category"
                   ref={register({ required: true })}
                 >
-                  {optionsList}
+                  <option className="options">
+                    {translate("please_choose")}
+                  </option>
+                  {categoriesList}
                 </select>
               </Form.Field>
               <Form.Field>
                 <label>I can receive bids in the following languages</label>
-                <Checkbox id="sv" label="Swedish" />
+                <Checkbox id="se" label="Swedish" />
                 <Checkbox id="en" label="English" />
               </Form.Field>
               <Form.Field>
