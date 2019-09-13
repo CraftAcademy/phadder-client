@@ -10,11 +10,12 @@ import axios from 'axios';
 import { I18nContext } from "../i18n/index";
 
 const CreateRequest = props => {
-  const { translate } = useContext(I18nContext);
-  props.showCreateServiceRequestModal();
+  const { translate, langCode } = useContext(I18nContext);
   const { register, handleSubmit } = useForm();
   const [liveLanguage, setLiveLanguage] = useState();
   const [categories, setCategories] = useState();
+  props.showCreateServiceRequestModal();
+
 
 
   const saveServiceRequestHandler = async data => {
@@ -36,16 +37,13 @@ const CreateRequest = props => {
 
 
   useEffect(() => {
-    async function fetchCategories() {
-      // You can await here
+    const fetchCategories = async () => {
       const response = await axios.get("http://localhost:3000/api/categories")
       setCategories(response.data)
-      console.log('categories: ' + JSON.stringify(categories))
-
     }
     fetchCategories();
 
-  }, [categories]);
+  }, []);
 
 
   const getLanguage = async val => {
@@ -68,19 +66,21 @@ const CreateRequest = props => {
     }
   };
 
-  let optionsList = async () => {
-    debugger
-    return (
-      <>
-        <option className="options">
-          {translate("please_choose")}
+  let optionsList
+  if (categories) {
+    optionsList = categories.map((category) => {
+      let translatedCategory = category.translations.find((translation) => {
+        return translation.locale === langCode.toLowerCase()
+      })
+      return (
+        <option name={translatedCategory.name}>
+          {translatedCategory.name}
         </option>
-        <option className="options" name="accounting">
-          {translate("accounting")}
-        </option>
-      </>
-    )
+      )
+    })
   }
+
+
 
   return (
     <>
@@ -118,6 +118,9 @@ const CreateRequest = props => {
                   name="category"
                   ref={register({ required: true })}
                 >
+                  <option className="options">
+                    {translate("please_choose")}
+                  </option>
                   {optionsList}
                 </select>
               </Form.Field>

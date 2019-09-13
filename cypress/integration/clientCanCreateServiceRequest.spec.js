@@ -16,7 +16,7 @@ describe("Client can create service request", () => {
     cy.visit("http://localhost:3001");
   });
 
-  it("Request is posted successfully", () => {
+  it("Request is posted successfully [EN]", () => {
 
     cy.get("#create-request-button").click();
     cy.get("#request-form").within(() => {
@@ -25,6 +25,23 @@ describe("Client can create service request", () => {
       cy.get("#details").type("Im a professional painter, I want a website to show the world my art");
       cy.get('select[id="budget"]').select("Big")
       cy.get('select[id="timeframe"]').select("Long Term")
+      cy.get("#submit-request-button").click();
+    });
+    cy.contains("Request successfully created");
+    cy.get("#create-request-form").should("not.exist");
+    cy.wait(2000)
+  });
+
+  it("Request is posted successfully [SV]", () => {
+    cy.get("#language-options").invoke("show");
+    cy.get(".SV").click();
+    cy.get("#create-request-button").click();
+    cy.get("#request-form").within(() => {
+      cy.get("#title").type("Build my webpage");
+      cy.get('select[id="category"]').select("IT tjänster");
+      cy.get("#details").type("Im a professional painter, I want a website to show the world my art");
+      cy.get('select[id="budget"]').select("Stor")
+      cy.get('select[id="timeframe"]').select("Chill")
       cy.get("#submit-request-button").click();
     });
     cy.contains("Request successfully created");
