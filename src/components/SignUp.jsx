@@ -15,8 +15,8 @@ const SignUp = props => {
   const saveNewUserHandler = (data, e) => {
     e.preventDefault();
     const { registerUser } = props;
-    const { email, firstName, password } = data;
-    registerUser({ email, firstName, password })
+    const { email, first_name, last_name, password } = data;
+    registerUser({ email, first_name, last_name, password })
       .then(() => {
         props.flashActions.dispatchMessage(`Welcome to Phadder!`, "success");
       })

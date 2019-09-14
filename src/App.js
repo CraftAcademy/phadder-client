@@ -10,7 +10,9 @@ import Footer from './components/Footer'
 
 const App = props => {
   if (props.flashMessage.display) {
-    toast(props.flashMessage.message, { type: props.flashMessage.type });
+    toast(props.flashMessage.message.toString(), {
+      type: props.flashMessage.type
+    });
   }
 
   return (

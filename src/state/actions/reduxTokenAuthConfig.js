@@ -10,10 +10,11 @@ const config = {
     email: "email"
   },
   userRegistrationAttributes: {
-    firstName: "firstName",
-    lastName: "lastName",
+    first_name: "firstName",
+    last_name: "lastName",
     email: "email",
-    password_confirmation: "password_confirmation"
+    password_confirmation: "password_confirmation",
+    role: 'role'
   }
 };
 

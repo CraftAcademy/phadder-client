@@ -17,8 +17,9 @@ const LogIn = props => {
   const loginHandler = (data, e) => {
     e.preventDefault();
     const { email, password } = data;
+    const role = "end_user"
     props
-      .signInUser({ email, password })
+      .signInUser({ email, password, role })
       .then(() => {
         props.flashActions.dispatchMessage(`Welcome to Phadder!`, "success");
       })
