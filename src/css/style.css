@@ -478,6 +478,24 @@ select {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  height: 150px;
+  height: 100px;
   background-color: rgb(230, 230, 230);
+}
+
+#footer-bot {
+  padding: 40px;
+  height: 20px;
+  text-align:center;
+  background-color: rgb(230, 230, 230);
+}
+
+#footer-title{
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: -5px;
+}
+
+#footer-links {
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: -2px;
+  color: #96006a;
 }
