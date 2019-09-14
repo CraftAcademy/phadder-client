@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "service_requester": "John Doe",
+    "title": "To much snow breaked my roof in half",
+    "category": "Construction and Maintenance",
+    "details": "Its my garage roof, the roof is flat so the snow kept building up, tree construction, weak as hell",
+    "budget": "Medium",
+    "timeframe": "Moderate",
+    "city": "Stockholm"
+  },
+  {
+    "id": 2,
+    "service_requester": "John Doe",
+    "title": "I need a drinking budy",
+    "category": "IT Service",
+    "details": "The beneficial of drinking with software developers are amazing, they're super cool",
+    "budget": "Big",
+    "timeframe": "Urgent",
+    "city": "Stockholm"
+  },
+  {
+    "id": 3,
+    "service_requester": "Lars-Göran Sankqvist",
+    "title": "I need help with taxes",
+    "category": "Financial Service",
+    "details": "It's soon time for my taxes to be sent in and I'm falling behind",
+    "budget": "Big",
+    "timeframe": "Urgent",
+    "city": "Göteborg"
+  }
+]

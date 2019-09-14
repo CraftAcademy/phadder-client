@@ -10,7 +10,7 @@ describe("User can log in", () => {
       response: "fixture:successful_log_in.json"
     });
     cy.user_login("johndoe@mail.com", "password");
-    cy.contains("Welcome John!");
+    cy.contains("Welcome to Phadder!");
     cy.wait(2000)
   });
 

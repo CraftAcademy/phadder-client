@@ -11,6 +11,21 @@ describe("Language is detected when writing request description", () => {
       response: "fixture:successful_language_detection_response.json",
       status: 200
     });
+    cy.route({
+      method: "POST",
+      url: "http://localhost:3000/api/post_code_queries",
+      response: "fixture:successful_fetching_city_response.json",
+      status: 200
+    });
+    cy.route({
+      method: "GET",
+      url: "http://localhost:3000/api/categories",
+      response: "fixture:api_categories.json",
+      status: 200
+    });
+    cy.get("#get-location-button").click();
+    cy.get("#post-code-input").type("11240");
+    cy.contains("Stockholm, Stockholm");
     cy.get("#create-request-button").click();
     cy.get("#request-form").within(() => {
       cy.get("#title").type("Build my webpage");

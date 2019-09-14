@@ -12,14 +12,16 @@ import "../css/style.css";
 
 const LogIn = props => {
   const { register, handleSubmit } = useForm();
-   const { translate } = useContext(I18nContext);
+  const { translate } = useContext(I18nContext);
 
   const loginHandler = (data, e) => {
     e.preventDefault();
     const { email, password } = data;
     props
       .signInUser({ email, password })
-      .then()
+      .then(() => {
+        props.flashActions.dispatchMessage(`Welcome to Phadder!`, "success");
+      })
       .catch(error => {
         props.flashActions.dispatchMessage(error.response.data.errors, "error");
       });
@@ -27,18 +29,16 @@ const LogIn = props => {
   return (
     <>
       <Modal
-        trigger={
-          <Button id="login-button">
-            {translate("login")}
-          </Button>
-        }
+        trigger={<Button id="login-button">{translate("login")}</Button>}
         centered={false}
       >
-        <Modal.Header>{translate("login")}</Modal.Header>
+        <Modal.Header id="login-title">
+          {translate("existing_user")}
+        </Modal.Header>
         <Modal.Content>
           <Form id="login-form" onSubmit={handleSubmit(loginHandler)}>
             <Form.Field>
-              <label>Email</label>
+              <label id="login-label">Email</label>
               <input
                 id="email"
                 name="email"
@@ -46,7 +46,7 @@ const LogIn = props => {
               />
             </Form.Field>
             <Form.Field>
-              <label>{translate("password")}</label>
+              <label id="login-label">{translate("password")}</label>
               <input
                 id="password"
                 name="password"
@@ -55,12 +55,12 @@ const LogIn = props => {
               />
             </Form.Field>
             <Button id="login-form-submit" type="submit">
-             {translate("login")}
+              {translate("login")}
             </Button>
+            <OauthButton provider="facebook">
+              {translate("log_in_with_facebook")}
+            </OauthButton>
           </Form>
-          <OauthButton provider="facebook">
-            {translate("log_in_with_facebook")}
-          </OauthButton>
         </Modal.Content>
       </Modal>
     </>

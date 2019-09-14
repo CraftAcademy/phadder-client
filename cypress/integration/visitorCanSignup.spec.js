@@ -16,7 +16,7 @@ describe("Visitor can sign up", () => {
       "password"
     );
     cy.get("#submit-account-button").click();
-    cy.contains("Welcome John!");
+    cy.contains("Welcome to Phadder!");
     cy.wait(2000);
   });
 

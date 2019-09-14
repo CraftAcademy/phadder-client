@@ -20,8 +20,8 @@ const BuyersExplain = () => {
           <Grid.Column width={8}>
             <div id="buyer1-logo" />
           </Grid.Column>
-          <Grid.Column width={8}>
-            <h1>{translate("get_started")}</h1>
+          <Grid.Column width={8} id="buyer-explain-div">
+            <h1 id="buyer-explain-title">{translate("get_started")}</h1>
             <p>{translate("buyers_p1")}</p>
             <p>{translate("buyers_p2")}</p>
             <p>{translate("buyers_p3")}</p>
@@ -32,8 +32,8 @@ const BuyersExplain = () => {
           <Grid.Column width={8}>
             <div id="buyer2-logo" />
           </Grid.Column>
-          <Grid.Column width={8}>
-            <h1>{translate("get_connected")}</h1>
+          <Grid.Column width={8} id="buyer-explain-div">
+            <h1 id="buyer-explain-title">{translate("get_connected")}</h1>
             <p>{translate("buyers_p4")}</p>
             <p>{translate("buyers_p5")}</p>
           </Grid.Column>
@@ -43,8 +43,8 @@ const BuyersExplain = () => {
           <Grid.Column width={8}>
             <div id="buyer3-logo" />
           </Grid.Column>
-          <Grid.Column width={8}>
-            <h1>{translate("job_done")}</h1>
+          <Grid.Column width={8} id="buyer-explain-div">
+            <h1 id="buyer-explain-title">{translate("job_done")}</h1>
             <p>{translate("buyers_p6")}</p>
             <p>{translate("buyers_p7")}</p>
             <p>{translate("buyers_p8")}</p>

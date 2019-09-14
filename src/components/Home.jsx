@@ -9,7 +9,7 @@ import * as flashActions from "../state/actions/flashActions";
 import { bindActionCreators } from "redux";
 import "../css/style.css";
 import { I18nContext } from "../i18n/index";
-import CityFetcher from './CityFetcher';
+import CityFetcher from "./CityFetcher";
 
 const Home = props => {
   const [explain, setExplain] = useState(<BuyersExplain />);
@@ -21,10 +21,15 @@ const Home = props => {
   return (
     <Container>
       <div id="cover">
-        <div id="main-actions">
-          {signUpActions}
-          <CreateRequest />
-          <CityFetcher />
+        <div id="cover-info">
+          <div id="main-actions-title">{translate("cover_title")}</div>
+          <div id="main-actions-info">{translate("cover_info")}</div>
+
+          <div id="main-actions">
+            {signUpActions}
+
+            <CityFetcher />
+          </div>
         </div>
       </div>
       <div id="explain-selector">

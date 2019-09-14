@@ -17,7 +17,9 @@ const SignUp = props => {
     const { registerUser } = props;
     const { email, firstName, password } = data;
     registerUser({ email, firstName, password })
-      .then()
+      .then(() => {
+        props.flashActions.dispatchMessage(`Welcome to Phadder!`, "success");
+      })
       .catch(error => {
         props.flashActions.dispatchMessage(error.response.data.errors, "error");
       });
@@ -29,11 +31,13 @@ const SignUp = props => {
         trigger={<Button id="sign-up-button">{translate("signup")}</Button>}
         centered={false}
       >
-        <Modal.Header>{translate("signup-header")}</Modal.Header>
+        <Modal.Header id="signup-title">
+          {translate("signup-header")}
+        </Modal.Header>
         <Modal.Content>
           <Form id="signup-form" onSubmit={handleSubmit(saveNewUserHandler)}>
             <Form.Field>
-              <label>{translate("first_name")}</label>
+              <label id="signup-label">{translate("first_name")}</label>
               <input
                 id="first-name"
                 name="firstName"
@@ -42,7 +46,7 @@ const SignUp = props => {
             </Form.Field>
 
             <Form.Field>
-              <label>{translate("last_name")}</label>
+              <label id="signup-label">{translate("last_name")}</label>
               <input
                 id="last-name"
                 name="lastName"
@@ -51,7 +55,7 @@ const SignUp = props => {
             </Form.Field>
 
             <Form.Field>
-              <label>Email</label>
+              <label id="signup-label">Email</label>
               <input
                 id="email"
                 name="email"
@@ -60,7 +64,7 @@ const SignUp = props => {
             </Form.Field>
 
             <Form.Field>
-              <label>{translate("password")}</label>
+              <label id="signup-label">{translate("password")}</label>
               <input
                 id="password"
                 name="password"
@@ -70,7 +74,9 @@ const SignUp = props => {
             </Form.Field>
 
             <Form.Field>
-              <label>{translate("password_confirmation")}</label>
+              <label id="signup-label">
+                {translate("password_confirmation")}
+              </label>
               <input
                 id="password-confirmation"
                 name="passwordConfirmation"

@@ -13,7 +13,7 @@ import { I18nContextProvider } from "./i18n/index";
 
 const reduxOauthConfig = {
   backend: {
-    apiUrl: "http://localhost:3000/api",
+    apiUrl: "https://www.phadder.com/api",
     signOutPath: null,
     authProviderPaths: {
       facebook: "/auth/facebook/"

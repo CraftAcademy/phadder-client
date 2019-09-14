@@ -14,18 +14,22 @@ const CreateRequest = props => {
   const { register, handleSubmit } = useForm();
   const [liveLanguage, setLiveLanguage] = useState();
   const [categories, setCategories] = useState();
-  props.showCreateServiceRequestModal();
-
+  const [selectedPicture, setSelectedPicture] = useState();
+    props.showCreateServiceRequestModal();
+  
 
 
   const saveServiceRequestHandler = async data => {
-    const { title, category, details, budget, timeframe } = data;
+    const { title, category, details, budget, time_frame } = data;
+    const location = props.location
     let response = await saveRequest(
       title,
       category,
       details,
       budget,
-      timeframe
+      time_frame,
+      selectedPicture,
+      location
     );
     if (response.status === 200) {
       props.dispatchMessage(response.data.message, "success");
@@ -81,6 +85,19 @@ const CreateRequest = props => {
   }
 
 
+  const toBase64 = file =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = error => reject(error);
+    });
+
+  const fileUploadHandler = async event => {
+    const file = event.target.files[0];
+    let convertedFile = await toBase64(file);
+    setSelectedPicture(convertedFile);
+  };
 
   return (
     <>
@@ -92,18 +109,20 @@ const CreateRequest = props => {
               onClick={() => props.showCreateServiceRequestModal()}
               id="create-request-button"
             >
-              {translate("create_request")}
+              {translate("continue-with-request")}
             </Button>
           }
         >
-          <Modal.Header>{translate("create_request_header")}</Modal.Header>
+          <Modal.Header id="create-request-title">
+            {translate("create_request_header")}
+          </Modal.Header>
           <Modal.Content>
             <Form
               id="request-form"
               onSubmit={handleSubmit(saveServiceRequestHandler)}
             >
               <Form.Field>
-                <label>{translate("title")}</label>
+                <label id="create-request-label">{translate("title")}</label>
                 <input
                   id="title"
                   name="title"
@@ -112,7 +131,7 @@ const CreateRequest = props => {
               </Form.Field>
 
               <Form.Field>
-                <label>{translate("category")}</label>
+                <label id="create-request-label">{translate("category")}</label>
                 <select
                   id="category"
                   name="category"
@@ -144,7 +163,7 @@ const CreateRequest = props => {
               </Form.Field>
 
               <Form.Field>
-                <label>{translate("budget")}</label>
+                <label id="create-request-label">{translate("budget")}</label>
                 <select
                   id="budget"
                   name="budget"
@@ -166,10 +185,12 @@ const CreateRequest = props => {
               </Form.Field>
 
               <Form.Field>
-                <label>{translate("time-frame")}</label>
+                <label id="create-request-label">
+                  {translate("time-frame")}
+                </label>
                 <select
                   id="timeframe"
-                  name="timeframe"
+                  name="time_frame"
                   ref={register({ required: true })}
                 >
                   <option className="options">
@@ -186,7 +207,15 @@ const CreateRequest = props => {
                   </option>
                 </select>
               </Form.Field>
-
+              <Form.Field>
+                <input
+                  id="select-image"
+                  accept="image/png, image/jpeg"
+                  type="file"
+                  name="image"
+                  onChange={fileUploadHandler}
+                />
+              </Form.Field>
               <Button id="submit-request-button" type="submit">
                 {translate("submit")}
               </Button>
@@ -200,7 +229,8 @@ const CreateRequest = props => {
 
 const mapStateToProps = state => {
   return {
-    showModal: state.modalState.displayCreateServiceRequestModal
+    showModal: state.modalState.displayCreateServiceRequestModal,
+    location: state.location
   };
 };
 

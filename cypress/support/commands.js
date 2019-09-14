@@ -37,3 +37,26 @@ Cypress.Commands.add("user_login", (email, password) => {
   });
   cy.get("#login-form-submit").click();
 });
+
+Cypress.Commands.add("file_upload", file => {
+  const selector = "#select-image";
+  const fixturePath = file;
+  const type = "image/jpeg";
+
+  cy.get(selector).then(subject =>
+    cy.window().then(win =>
+      cy
+        .fixture(fixturePath, "base64")
+        .then(Cypress.Blob.base64StringToBlob)
+        .then(blob => {
+          const el = subject[0];
+          const testFile = new win.File([blob], name, { type });
+          const dataTransfer = new win.DataTransfer();
+          dataTransfer.items.add(testFile);
+          el.files = dataTransfer.files;
+          cy.wrap(subject).trigger("change", { force: true });
+        })
+    )
+  );
+});
+

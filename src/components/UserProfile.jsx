@@ -1,13 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
+import ProfileImageUpload from "./UploadProfilePic";
+import DisplayServiceRequest from "./DisplayServiceRequest";
+import "../css/style.css";
 
 const UserProfile = props => {
   return (
-    <>
-      <h1>
+    <div id="user-profile">
+      <h1 id="profile-welcome">
         Welcome {props.currentUser.attributes.firstName}, to your profile page!
+        <ProfileImageUpload/>
       </h1>
-    </>
+      <DisplayServiceRequest />
+    </div>
   );
 };
 

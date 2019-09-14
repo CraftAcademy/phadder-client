@@ -30,7 +30,7 @@
   "update": "Uppdatera",
   "view_details": "se mer...",
   "yesterday": "Igår",
-  "create_request_header": "Beskriv dina behov, och få offerter från utvalda tjänsteleverantörer i ditt närområde.",
+  "create_request_header": "BESKRIV DINA BEHOV, OCH FÅ OFFERTER FRÅN UTVALDA TJÄNSTELEVERANTÖRER I DITT NÄROMRÅDE.",
   "avatar": "Ladda upp profilbild",
   "banner": "Ladda upp profilomslag",
   "company_name": "Företagsnamn",
@@ -86,7 +86,7 @@
   "user_stories": "Våra användare",
   "account_dashboard": "Kontoinställningar",
   "enter": "Gå in",
-  "existing_user": "Befintlig användare",
+  "existing_user": "BEFINTLIG ANVÄNDARE",
   "for_buyers": "För Köpare",
   "for_service_providers": "För Säljare",
   "join": "Gå med",
@@ -114,7 +114,7 @@
   "password_confirmation": "Bekräfta lösenord",
   "facebook": "Bekräfta med Facebook",
   "signup": "BLI MEDLEM SOM KUND",
-  "signup-header": "Gå med!",
+  "signup-header": "GÅ MED!",
   "signup-button": "Bli medlem",
   "time-frame": "Tidsram",
   "choose-timeframe": "Välj Tidrsam",
@@ -156,5 +156,13 @@
   "sales_channel": "En ny försäljningskanal",
   "advantage": "Den avgörande fördelen",
   "suppliers_p6": "Ett basmedlemskap på Phadder är GRATIS, men även det betalda Verified Provider Badge medlemskapet kostar betydligt mindre än många andra klassiska försäljningskanaler och kan generera upp till tre gånger så många resultat. Dessutom föredrar majoriteten av företagare att leta efter produkt- och tjänsteleverantörer på nätet.",
-  "profile-button": "Profil"
-}
+  "profile-button": "Profil",
+  "cover_title": "Smidigare upphandlingar",
+  "cover_info": "Phadder B2B marknadsplats är utformad för att göra inköp av företagstjänster snabba, smidiga och kostnadseffektiva.",
+  "header-profile-picture": "Välj en ny bild",
+  "profile-update-picture": "Ladda upp bild",
+  "Edit-profile-button": "Redigera",
+  "profile-pic-description": "En ny bild gör din profil mer personlig, och ibland hjälper det för bättre affärer.",
+  "continue-with-request": "Fortsätt",
+  "create-a-req-button": "SKAPA EN FÖRFRÅGAN"
+} 
