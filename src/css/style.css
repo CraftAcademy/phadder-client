@@ -476,8 +476,7 @@ select {
 #footer {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   height: 150px;
   background-color: rgb(230, 230, 230);
