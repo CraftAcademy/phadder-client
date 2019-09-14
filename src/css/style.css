@@ -253,8 +253,7 @@
   font-family: "Montserrat", sans-serif;
 }
 
-#sign-up-button:hover,
-#create-request-button:hover {
+#sign-up-button:hover {
   background-color: #c81793;
 }
 
@@ -365,7 +364,9 @@ select {
   font-family: "Montserrat", sans-serif;
 }
 
-#submit-request-button {
+#submit-request-button,
+#cancel-cityfetch-modal,
+#create-request-button {
   margin: 5px;
   background-color: #96006a;
   padding-top: 10px;

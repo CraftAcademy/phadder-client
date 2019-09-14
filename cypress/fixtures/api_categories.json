@@ -1,0 +1,156 @@
+[
+  {
+    "id": 128,
+    "name": "Consulting",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "Konsulting"
+      },
+      {
+        "locale": "en",
+        "name": "Consulting"
+      }
+    ]
+  },
+  {
+    "id": 129,
+    "name": "Accounting",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "Bokföring"
+      },
+      {
+        "locale": "en",
+        "name": "Accounting"
+      }
+    ]
+  },
+  {
+    "id": 130,
+    "name": "Cleaning Service",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "Städhjälp"
+      },
+      {
+        "locale": "en",
+        "name": "Cleaning Service"
+      }
+    ]
+  },
+  {
+    "id": 131,
+    "name": "Construction and Maintenance",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "Bygg & Underhållning"
+      },
+      {
+        "locale": "en",
+        "name": "Construction and Maintenance"
+      }
+    ]
+  },
+  {
+    "id": 132,
+    "name": "Education",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "Utbildning"
+      },
+      {
+        "locale": "en",
+        "name": "Education"
+      }
+    ]
+  },
+  {
+    "id": 133,
+    "name": "Financial Services",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "Lån och krediter"
+      },
+      {
+        "locale": "en",
+        "name": "Financial Services"
+      }
+    ]
+  },
+  {
+    "id": 134,
+    "name": "Health Care",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "Hälsovård"
+      },
+      {
+        "locale": "en",
+        "name": "Health Care"
+      }
+    ]
+  },
+  {
+    "id": 135,
+    "name": "Insurance",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "Försäkringar"
+      },
+      {
+        "locale": "en",
+        "name": "Insurance"
+      }
+    ]
+  },
+  {
+    "id": 136,
+    "name": "IT Services",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "IT tjänster"
+      },
+      {
+        "locale": "en",
+        "name": "IT Services"
+      }
+    ]
+  },
+  {
+    "id": 137,
+    "name": "Legal Services",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "Juridik"
+      },
+      {
+        "locale": "en",
+        "name": "Legal Services"
+      }
+    ]
+  },
+  {
+    "id": 138,
+    "name": "Software Development",
+    "translations": [
+      {
+        "locale": "sv",
+        "name": "Mjukvaruutveckling"
+      },
+      {
+        "locale": "en",
+        "name": "Software Development"
+      }
+    ]
+  }
+]
