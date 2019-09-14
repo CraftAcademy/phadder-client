@@ -4,9 +4,10 @@ const initialState = {
       isLoading: false,
       isSignedIn: false,
       attributes: {
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         email: "", 
+        role: 'end_user'
       },
     },
   },
